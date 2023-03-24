@@ -523,7 +523,7 @@
         }
       ],
       "maintenance": {
-        "saucisse": 1,
+        "sausages": 1,
         "moonshine": 1,
         "overalls": 1
       },
@@ -544,7 +544,7 @@
         }
       ],
       "maintenance": {
-        "saucisse": 1,
+        "sausages": 1,
         "moonshine": 1,
         "overalls": 1
       },
@@ -569,7 +569,7 @@
         }
       ],
       "maintenance": {
-        "saucisse": 1,
+        "sausages": 1,
         "moonshine": 1,
         "overalls": 1
       },
@@ -593,7 +593,7 @@
         }
       ],
       "maintenance": {
-        "saucisse": 2,
+        "sausages": 2,
         "moonshine": 2,
         "overalls": 2
       },
@@ -628,7 +628,7 @@
         }
       ],
       "maintenance": {
-        "saucisse": 1,
+        "sausages": 1,
         "moonshine": 1,
         "overalls": 1
       },
@@ -662,7 +662,7 @@
         }
       ],
       "maintenance": {
-        "saucisse": 2,
+        "sausages": 2,
         "moonshine": 2,
         "overalls": 2
       },
@@ -688,7 +688,7 @@
         }
       ],
       "maintenance": {
-        "saucisse": 2,
+        "sausages": 2,
         "moonshine": 2,
         "overalls": 2
       },
@@ -714,7 +714,7 @@
         }
       ],
       "maintenance": {
-        "saucisse": 2,
+        "sausages": 2,
         "moonshine": 2,
         "overalls": 2
       },
@@ -739,7 +739,7 @@
         }
       ],
       "maintenance": {
-        "saucisse": 1,
+        "sausages": 1,
         "moonshine": 1,
         "overalls": 1
       },
@@ -764,7 +764,7 @@
         }
       ],
       "maintenance": {
-        "saucisse": 2,
+        "sausages": 2,
         "moonshine": 2,
         "overalls": 2
       },
@@ -788,7 +788,7 @@
       "maintenance": {
         "steak": 1,
         "milk can": 1,
-        "veste": 1
+        "vest": 1
       },
       "proximity": "water"
     },
@@ -813,7 +813,7 @@
       "maintenance": {
         "steak": 1,
         "milk can": 1,
-        "veste": 1
+        "vest": 1
       },
       "proximity": null
     },
@@ -838,7 +838,7 @@
       "maintenance": {
         "steak": 2,
         "milk can": 2,
-        "veste": 2
+        "vest": 2
       },
       "proximity": null
     }
@@ -867,7 +867,7 @@
       "maintenance": {
         "steak": 1,
         "milk can": 1,
-        "veste": 1
+        "vest": 1
       },
       "proximity": null
     },
@@ -894,7 +894,7 @@
       "maintenance": {
         "steak": 1,
         "milk can": 1,
-        "veste": 1
+        "vest": 1
       },
       "proximity": null
     },
@@ -921,7 +921,7 @@
       "maintenance": {
         "steak": 2,
         "milk can": 2,
-        "veste": 2
+        "vest": 2
       },
       "proximity": null
     },
@@ -948,7 +948,7 @@
       "maintenance": {
         "steak": 1,
         "milk can": 1,
-        "veste": 1
+        "vest": 1
       },
       "proximity": null
     },
@@ -974,7 +974,7 @@
       "maintenance": {
         "steak": 2,
         "milk can": 2,
-        "veste": 2
+        "vest": 2
       },
       "proximity": null
     },
@@ -999,7 +999,7 @@
       "maintenance": {
         "steak": 2,
         "milk can": 2,
-        "veste": 2
+        "vest": 2
       },
       "proximity": null
     },
