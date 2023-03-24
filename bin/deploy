@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-rm -r var/cache/*
-bin/console deploy
-sudo rm -r /data/www/www.magiclegacy.fr/var/cache/*
-sudo chmod -R 0777 /data/www/www.magiclegacy.fr/var/

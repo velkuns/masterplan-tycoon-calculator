@@ -6,9 +6,9 @@ parameters:
 
   eureka.deployer.config:
     # Default values
-    app.name: 'magiclegacy'
-    app.domain: 'www.magiclegacy.fr'
-    app.tag: '%app.version%'
+    app.name:   'masterplan-tycoon-calculator'
+    app.domain: 'masterplan-tycoon-calculator.velkuns.com'
+    app.tag:    '%app.version%'
 
     install:
       #~ Installation steps
