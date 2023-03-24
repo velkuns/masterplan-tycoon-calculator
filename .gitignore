@@ -1,0 +1,26 @@
+#~ Composer
+composer.phar
+composer.lock
+vendor/
+
+#~ Symfony
+var/
+
+#~ Statics
+node_modules/
+
+#~ secrets.yaml
+config/secrets/*
+!config/secrets/.gitkeep
+
+#~ tests files
+#test.md
+#test.json
+#test.php
+
+#~ Tests
+.phpunit.result.cache
+build/
+
+#~ others
+.idea/*

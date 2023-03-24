@@ -1,0 +1,1081 @@
+{
+  "0": {
+    "storage": {
+      "cost": {
+        "plank": 4,
+        "stone": 4
+      },
+      "recipe": null,
+      "maintenance": null,
+      "proximity": null
+    },
+    "fishery": {
+      "cost": {
+        "plank": 2
+      },
+      "recipes": [
+        {
+          "time": 30,
+          "produce": {
+            "fish": 1
+          },
+          "consume": null
+        }
+      ],
+      "maintenance": null,
+      "proximity": "water"
+    },
+    "well": {
+      "cost": {
+        "plank": 2
+      },
+      "recipes": [
+        {
+          "time": 15,
+          "produce": {
+            "water": 1
+          },
+          "consume": null
+        }
+      ],
+      "maintenance": null,
+      "proximity": "water"
+    },
+    "lumber camp": {
+      "cost": {
+        "plank": 2
+      },
+      "recipes": [
+        {
+          "time": 60,
+          "produce": {
+            "tree": 1
+          },
+          "consume": null
+        },
+        {
+          "time": 60,
+          "produce": null,
+          "consume": null
+        }
+      ],
+      "maintenance": null,
+      "proximity": null
+    },
+    "sawmill": {
+      "cost": {
+        "plank": 2,
+        "stone": 1
+      },
+      "recipes": [
+        {
+          "time": 30,
+          "produce": {
+            "plank": 2
+          },
+          "consume": {
+            "tree": 1
+          }
+        }
+      ],
+      "maintenance": null,
+      "proximity": null
+    },
+    "quarry": {
+      "cost": {
+        "plank": 2
+      },
+      "recipes": [
+        {
+          "time": 75,
+          "produce": {
+            "stone": 1
+          },
+          "consume": null
+        }
+      ],
+      "maintenance": null,
+      "proximity": "rocks"
+    }
+  },
+  "1": {
+    "farm": {
+      "cost": {
+        "plank": 4,
+        "stone": 3
+      },
+      "recipes": [
+        {
+          "time": 60,
+          "produce": {
+            "grain": 2
+          },
+          "consume": null
+        },
+        {
+          "time": 60,
+          "produce": null,
+          "consume": null
+        }
+      ],
+      "maintenance": {
+        "fish": 1,
+        "water": 1
+      },
+      "proximity": null
+    },
+    "mill": {
+      "cost": {
+        "plank": 4,
+        "stone": 3
+      },
+      "recipes": [
+        {
+          "time": 30,
+          "produce": {
+            "meal": 2
+          },
+          "consume": {
+            "grain": 2
+          }
+        }
+      ],
+      "maintenance": {
+        "fish": 2,
+        "water": 2
+      },
+      "proximity": null
+    },
+    "bakery": {
+      "cost": {
+        "plank": 8,
+        "stone": 6
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "bread": 3
+          },
+          "consume": {
+            "meal": 2,
+            "water": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "fish": 2,
+        "water": 2
+      },
+      "proximity": null
+    },
+    "brewery": {
+      "cost": {
+        "plank": 4,
+        "stone": 3
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "beer": 2
+          },
+          "consume": {
+            "grain": 1,
+            "water": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "fish": 2,
+        "water": 2
+      },
+      "proximity": null
+    },
+    "sheep farm": {
+      "cost": {
+        "plank": 4,
+        "stone": 3
+      },
+      "recipes": [
+        {
+          "time": 60,
+          "produce": {
+            "wool": 1
+          },
+          "consume": null
+        },
+        {
+          "time": 60,
+          "produce": null,
+          "consume": null
+        }
+      ],
+      "maintenance": {
+        "fish": 1,
+        "water": 1
+      },
+      "proximity": null
+    },
+    "sewing workshop": {
+      "cost": {
+        "plank": 8,
+        "stone": 6
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "clothes": 2
+          },
+          "consume": {
+            "wool": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "fish": 2,
+        "water": 2
+      },
+      "proximity": null
+    },
+    "clay pit": {
+      "cost": {
+        "plank": 4,
+        "stone": 3
+      },
+      "recipes": [
+        {
+          "time": 75,
+          "produce": {
+            "clay": 1
+          },
+          "consume": null
+        }
+      ],
+      "maintenance": {
+        "bread": 1,
+        "beer": 1,
+        "clothes": 1
+      },
+      "proximity": "clay"
+    },
+    "brick factory": {
+      "cost": {
+        "plank": 8,
+        "stone": 6
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "brick": 2
+          },
+          "consume": {
+            "clay": 2
+          }
+        }
+      ],
+      "maintenance": {
+        "bread": 2,
+        "beer": 2,
+        "clothes": 2
+      },
+      "proximity": null
+    }
+  },
+  "2": {
+    "pig farm": {
+      "cost": {
+        "plank": 6,
+        "stone": 5
+      },
+      "recipes": [
+        {
+          "time": 30,
+          "produce": {
+            "pig": 1
+          },
+          "consume": {
+            "grain": 2,
+            "water": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "bread": 1,
+        "beer": 1,
+        "clothes": 1
+      },
+      "proximity": null
+    },
+    "butchery": {
+      "cost": {
+        "plank": 12,
+        "brick": 6
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "sausages": 3
+          },
+          "consume": {
+            "pig": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "bread": 2,
+        "beer": 2,
+        "clothes": 2
+      },
+      "proximity": null
+    },
+    "potato farm": {
+      "cost": {
+        "plank": 6,
+        "stone": 5
+      },
+      "recipes": [
+        {
+          "time": 60,
+          "produce": {
+            "potato": 2
+          },
+          "consume": null
+        },
+        {
+          "time": 60,
+          "produce": null,
+          "consume": null
+        }
+      ],
+      "maintenance": {
+        "bread": 1,
+        "beer": 1,
+        "clothes": 1
+      },
+      "proximity": null
+    },
+    "sugar cane plantation": {
+      "cost": {
+        "plank": 12,
+        "brick": 6
+      },
+      "recipes": [
+        {
+          "time": 60,
+          "produce": {
+            "sugar cane": 2
+          },
+          "consume": null
+        },
+        {
+          "time": 60,
+          "produce": null,
+          "consume": null
+        }
+      ],
+      "maintenance": {
+        "bread": 1,
+        "beer": 1,
+        "clothes": 1
+      },
+      "proximity": null
+    },
+    "moonshine factory": {
+      "cost": {
+        "plank": 16,
+        "stone": 14,
+        "brick": 12
+      },
+      "recipes": [
+        {
+          "time": 60,
+          "produce": {
+            "moonshine": 3
+          },
+          "consume": {
+            "potato": 1,
+            "sugar cane": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "bread": 3,
+        "beer": 3,
+        "clothes": 3
+      },
+      "proximity": null
+    },
+    "cotton plantation": {
+      "cost": {
+        "plank": 8,
+        "stone": 7
+      },
+      "recipes": [
+        {
+          "time": 60,
+          "produce": {
+            "cotton": 2
+          },
+          "consume": null
+        },
+        {
+          "time": 60,
+          "produce": null,
+          "consume": null
+        }
+      ],
+      "maintenance": {
+        "bread": 1,
+        "beer": 1,
+        "clothes": 1
+      },
+      "proximity": null
+    },
+    "cotton mill": {
+      "cost": {
+        "plank": 8,
+        "stone": 7,
+        "brick": 6
+      },
+      "recipes": [
+        {
+          "time": 30,
+          "produce": {
+            "calico": 2
+          },
+          "consume": {
+            "cotton": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "bread": 2,
+        "beer": 2,
+        "clothes": 2
+      },
+      "proximity": null
+    },
+    "felt workshop": {
+      "cost": {
+        "plank": 8,
+        "stone": 7,
+        "brick": 6
+      },
+      "recipes": [
+        {
+          "time": 30,
+          "produce": {
+            "felt": 2
+          },
+          "consume": {
+            "wool": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "bread": 2,
+        "beer": 2,
+        "clothes": 2
+      },
+      "proximity": null
+    },
+    "fur factory": {
+      "cost": {
+        "plank": 16,
+        "stone": 14,
+        "brick": 12
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "overalls": 3
+          },
+          "consume": {
+            "calico": 1,
+            "felt": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "bread": 3,
+        "beer": 3,
+        "clothes": 3
+      },
+      "proximity": null
+    },
+    "iron mine": {
+      "cost": {
+        "plank": 6,
+        "stone": 5
+      },
+      "recipes": [
+        {
+          "time": 75,
+          "produce": {
+            "iron": 1
+          },
+          "consume": null
+        }
+      ],
+      "maintenance": {
+        "saucisse": 1,
+        "moonshine": 1,
+        "overalls": 1
+      },
+      "proximity": "iron"
+    },
+    "coal mine": {
+      "cost": {
+        "plank": 6,
+        "stone": 5
+      },
+      "recipes": [
+        {
+          "time": 75,
+          "produce": {
+            "coal": 1
+          },
+          "consume": null
+        }
+      ],
+      "maintenance": {
+        "saucisse": 1,
+        "moonshine": 1,
+        "overalls": 1
+      },
+      "proximity": "coal"
+    },
+    "furnace": {
+      "cost": {
+        "plank": 8,
+        "stone": 7,
+        "brick": 6
+      },
+      "recipes": [
+        {
+          "time": 30,
+          "produce": {
+            "steel": 2
+          },
+          "consume": {
+            "iron": 1,
+            "coal": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "saucisse": 1,
+        "moonshine": 1,
+        "overalls": 1
+      },
+      "proximity": null
+    },
+    "steelworks": {
+      "cost": {
+        "plank": 16,
+        "stone": 14,
+        "brick": 12
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "steel beams": 2
+          },
+          "consume": {
+            "steel": 3
+          }
+        }
+      ],
+      "maintenance": {
+        "saucisse": 2,
+        "moonshine": 2,
+        "overalls": 2
+      },
+      "proximity": null
+    }
+  },
+  "3": {
+    "cow farm": {
+      "cost": {
+        "plank": 6,
+        "brick": 5
+      },
+      "recipes": [
+        {
+          "time": 60,
+          "produce": {
+            "cow": 2
+          },
+          "consume": null
+        },
+        {
+          "time": 60,
+          "produce": {
+            "milk": 2
+          },
+          "consume": null
+        },
+        {
+          "time": 60,
+          "produce": null,
+          "consume": null
+        }
+      ],
+      "maintenance": {
+        "saucisse": 1,
+        "moonshine": 1,
+        "overalls": 1
+      },
+      "proximity": null
+    },
+    "steakhouse": {
+      "cost": {
+        "plank": 8,
+        "stone": 4,
+        "brick": 4,
+        "steel beams": 2
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "steak": 2
+          },
+          "consume": {
+            "cow": 1
+          }
+        },
+        {
+          "time": 45,
+          "produce": {
+            "cuir": 2
+          },
+          "consume": {
+            "cow": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "saucisse": 2,
+        "moonshine": 2,
+        "overalls": 2
+      },
+      "proximity": null
+    },
+    "can factory": {
+      "cost": {
+        "plank": 8,
+        "stone": 4,
+        "brick": 4,
+        "steel beams": 2
+      },
+      "recipes": [
+        {
+          "time": 30,
+          "produce": {
+            "can": 2
+          },
+          "consume": {
+            "steel": 1,
+            "coal": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "saucisse": 2,
+        "moonshine": 2,
+        "overalls": 2
+      },
+      "proximity": null
+    },
+    "milk farm": {
+      "cost": {
+        "plank": 16,
+        "stone": 14,
+        "brick": 20,
+        "steel beams": 16
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "milk can": 2
+          },
+          "consume": {
+            "milk": 1,
+            "can": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "saucisse": 2,
+        "moonshine": 2,
+        "overalls": 2
+      },
+      "proximity": null
+    },
+    "tannery": {
+      "cost": {
+        "plank": 8,
+        "stone": 4,
+        "brick": 4,
+        "steel beams": 2
+      },
+      "recipes": [
+        {
+          "time": 30,
+          "produce": {
+            "tanned leather": 1
+          },
+          "consume": {
+            "cuir": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "saucisse": 1,
+        "moonshine": 1,
+        "overalls": 1
+      },
+      "proximity": null
+    },
+    "leather workshop": {
+      "cost": {
+        "plank": 16,
+        "stone": 14,
+        "brick": 20,
+        "steel beams": 16
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "vest": 2
+          },
+          "consume": {
+            "tanned leather": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "saucisse": 2,
+        "moonshine": 2,
+        "overalls": 2
+      },
+      "proximity": null
+    },
+    "sand mine": {
+      "cost": {
+        "plank": 8,
+        "stone": 7,
+        "brick": 4
+      },
+      "recipes": [
+        {
+          "time": 30,
+          "produce": {
+            "sand": 1
+          },
+          "consume": null
+        }
+      ],
+      "maintenance": {
+        "steak": 1,
+        "milk can": 1,
+        "veste": 1
+      },
+      "proximity": "water"
+    },
+    "glassmakers": {
+      "cost": {
+        "plank": 8,
+        "stone": 4,
+        "brick": 4,
+        "steel beams": 2
+      },
+      "recipes": [
+        {
+          "time": 30,
+          "produce": {
+            "glass": 1
+          },
+          "consume": {
+            "sand": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "steak": 1,
+        "milk can": 1,
+        "veste": 1
+      },
+      "proximity": null
+    },
+    "windows makers": {
+      "cost": {
+        "plank": 16,
+        "brick": 20,
+        "steel beams": 16
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "windows": 2
+          },
+          "consume": {
+            "glass": 1,
+            "tree": 2
+          }
+        }
+      ],
+      "maintenance": {
+        "steak": 2,
+        "milk can": 2,
+        "veste": 2
+      },
+      "proximity": null
+    }
+  },
+  "4": {
+    "red pepper farm": {
+      "cost": {
+        "plank": 8,
+        "brick": 7,
+        "windows": 4
+      },
+      "recipes": [
+        {
+          "time": 60,
+          "produce": {
+            "red pepper": 2
+          },
+          "consume": null
+        },
+        {
+          "time": 60,
+          "produce": null,
+          "consume": null
+        }
+      ],
+      "maintenance": {
+        "steak": 1,
+        "milk can": 1,
+        "veste": 1
+      },
+      "proximity": null
+    },
+    "cattle farm": {
+      "cost": {
+        "plank": 8,
+        "brick": 7,
+        "windows": 4
+      },
+      "recipes": [
+        {
+          "time": 60,
+          "produce": {
+            "beef": 2
+          },
+          "consume": null
+        },
+        {
+          "time": 60,
+          "produce": null,
+          "consume": null
+        }
+      ],
+      "maintenance": {
+        "steak": 1,
+        "milk can": 1,
+        "veste": 1
+      },
+      "proximity": null
+    },
+    "cannery": {
+      "cost": {
+        "plank": 16,
+        "brick": 20,
+        "steel beams": 12,
+        "windows": 8
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "canned food": 2
+          },
+          "consume": {
+            "red pepper": 1,
+            "beef": 1,
+            "can": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "steak": 2,
+        "milk can": 2,
+        "veste": 2
+      },
+      "proximity": null
+    },
+    "vineyard": {
+      "cost": {
+        "plank": 8,
+        "brick": 7,
+        "windows": 4
+      },
+      "recipes": [
+        {
+          "time": 60,
+          "produce": {
+            "grapes": 2
+          },
+          "consume": null
+        },
+        {
+          "time": 60,
+          "produce": null,
+          "consume": null
+        }
+      ],
+      "maintenance": {
+        "steak": 1,
+        "milk can": 1,
+        "veste": 1
+      },
+      "proximity": null
+    },
+    "winery": {
+      "cost": {
+        "plank": 16,
+        "brick": 20,
+        "steel beams": 12,
+        "windows": 8
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "wine": 2
+          },
+          "consume": {
+            "grapes": 1,
+            "glass": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "steak": 2,
+        "milk can": 2,
+        "veste": 2
+      },
+      "proximity": null
+    },
+    "boot factory": {
+      "cost": {
+        "plank": 16,
+        "brick": 20,
+        "steel beams": 12,
+        "windows": 8
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "boots": 1
+          },
+          "consume": {
+            "tanned leather": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "steak": 2,
+        "milk can": 2,
+        "veste": 2
+      },
+      "proximity": null
+    },
+    "rope workshop": {
+      "cost": {
+        "plank": 8,
+        "brick": 7,
+        "windows": 4
+      },
+      "recipes": [
+        {
+          "time": 30,
+          "produce": {
+            "rope": 1
+          },
+          "consume": {
+            "cotton": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "canned food": 1,
+        "wine": 1,
+        "boots": 1
+      },
+      "proximity": null
+    },
+    "sailmakers": {
+      "cost": {
+        "plank": 8,
+        "brick": 7,
+        "windows": 4
+      },
+      "recipes": [
+        {
+          "time": 30,
+          "produce": {
+            "sails": 1
+          },
+          "consume": {
+            "rope": 1,
+            "cotton": 3
+          }
+        }
+      ],
+      "maintenance": {
+        "canned food": 2,
+        "wine": 2,
+        "boots": 2
+      },
+      "proximity": null
+    },
+    "anchor workshop": {
+      "cost": {
+        "plank": 16,
+        "brick": 20,
+        "steel beams": 12,
+        "windows": 8
+      },
+      "recipes": [
+        {
+          "time": 45,
+          "produce": {
+            "anchor": 1
+          },
+          "consume": {
+            "steel beams": 1
+          }
+        }
+      ],
+      "maintenance": {
+        "canned food": 2,
+        "wine": 2,
+        "boots": 2
+      },
+      "proximity": null
+    }
+  }
+}

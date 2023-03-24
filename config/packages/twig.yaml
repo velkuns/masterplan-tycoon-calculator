@@ -1,0 +1,30 @@
+parameters:
+
+  #~ Theme: "universal"
+  twig.paths:
+    '../templates/bootstrap/common': 'common'
+    '../templates/bootstrap/layout': 'layout'
+    '../templates/bootstrap/macro':  'macro'
+    '../templates/bootstrap/app':    'app'
+
+services:
+
+  _defaults:
+    autowire: true
+
+  Twig\Loader\FilesystemLoader:
+    public: false
+
+  Twig\Environment:
+    public: false
+    arguments:
+      $loader: '@twig.filesystem'
+      $options:
+        cache: '%kernel.directory.cache%/%kernel.environment%/twig'
+        debug: '%kernel.debug%'
+
+  twig.filesystem:
+    alias: 'Twig\Loader\FilesystemLoader'
+
+  twig:
+    alias: 'Twig\Environment'

@@ -1,0 +1,34 @@
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true
+
+  router:
+    public: true
+    alias: 'Symfony\Component\Routing\Router'
+
+  Symfony\Component\Routing\:
+    resource: '%kernel.directory.root%/vendor/symfony/routing/*'
+    exclude:  '%kernel.directory.root%/vendor/symfony/routing/{Router,Tests}'
+
+  Symfony\Component\Config\:
+    resource: '%kernel.directory.root%/vendor/symfony/config/*'
+    exclude:  '%kernel.directory.root%/vendor/symfony/config/{FileLocator,Tests}'
+
+  Symfony\Component\Config\Loader\LoaderInterface:
+    alias: 'Symfony\Component\Routing\Loader\YamlFileLoader'
+
+  Symfony\Component\Config\FileLocatorInterface:
+    alias: 'Symfony\Component\Config\FileLocator'
+
+  Symfony\Component\Config\FileLocator:
+    arguments:
+      - '%kernel.directory.config%'
+
+  Symfony\Component\Routing\Router:
+    arguments:
+      $loader: '@Symfony\Component\Routing\Loader\YamlFileLoader'
+      $resource: 'routes.yaml'
+      $options:
+        cache_dir: '%kernel.directory.cache%'
+        debug: '%kernel.debug%'

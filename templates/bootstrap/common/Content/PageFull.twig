@@ -1,0 +1,17 @@
+{% extends '@layout/Index.twig' %}
+
+{% block page_title %}{{ pageTitle|default(meta.title) }}{% endblock %}
+
+{% block page %}
+
+    {% include '@common/Header/Header.twig' %}
+
+    <main class="flex-shrink-0">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    {% include '@common/Footer/Footer.twig'%}
+
+{% endblock %}

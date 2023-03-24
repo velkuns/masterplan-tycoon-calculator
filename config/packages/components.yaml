@@ -1,0 +1,11 @@
+services:
+
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true
+
+  Eureka\Component\Web\:
+    resource: '%kernel.directory.root%/vendor/eureka/component-web/src/*'
+
+  Psr\Clock\ClockInterface:
+    alias: 'Application\Service\Clock\SystemClock'

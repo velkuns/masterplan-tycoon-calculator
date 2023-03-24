@@ -1,0 +1,10 @@
+# ===== HOME =====
+home:
+  path:       '/'
+  controller: 'Application\Controller\Web\Home\HomeController::view'
+  methods:    [ 'GET' ]
+
+calculate:
+  path:       '/'
+  controller: 'Application\Controller\Web\Home\HomeController::calculate'
+  methods:    [ 'POST' ]

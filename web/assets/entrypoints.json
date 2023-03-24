@@ -1,0 +1,15 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/assets/bootstrap.min.js",
+        "/assets/app.js"
+      ],
+      "css": [
+        "/assets/bootstrap.min.css",
+        "/assets/bootstrap-icons.css",
+        "/assets/app.css"
+      ]
+    }
+  }
+}

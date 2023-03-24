@@ -1,0 +1,11 @@
+parameters:
+  phpVersion: 80100 # PHP 8.1 - Current minimal version supported
+  level: max
+  paths:
+    - ./src
+    - ./tests
+
+  bootstrapFiles:
+    - ./vendor/autoload.php
+
+  ignoreErrors: []

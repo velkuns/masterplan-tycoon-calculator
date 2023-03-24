@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+
+    <meta charset="{{ meta.charset }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#712cf9">
+
+    <title>{% block page_title %}{{ meta.title }}{% endblock %}</title>
+
+{% for file in cssFiles.app %}
+    <link rel="stylesheet" href="{{ file }}">
+{% endfor %}
+
+</head>
+
+<body class="d-flex flex-column h-100">
+
+{% block page %}{% endblock %}
+
+{% block footer_script %}{% endblock %}
+
+{% for file in jsFiles.app %}
+    <script src="{{ file }}"></script>
+{% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+services:
+  _defaults:
+    autowire: true
+
+
+  #~ Application Services
+  Application\Service\:
+    resource: '%kernel.directory.root%/src/Service'
+    exclude:  '%kernel.directory.root%/src/Service/{Cache}'
+
+  #~ Application controllers
+  Application\Controller\Web\:
+    resource: '%kernel.directory.root%/src/Controller/Web'
+    public: true # services called in ControllerMiddleware
+    calls:
+      - setEnvironment: ['%kernel.environment%', '%kernel.debug%']
+      - setTwig: ['@twig']
+      - setRouter: ['@router']
+      - setResponseFactory: ['@response_factory']
+      - setRequestFactory: ['@request_factory']
+      - setServerRequestFactory: ['@server_request_factory']
+      - setStreamFactory: ['@stream_factory']
+      - setUriFactory: ['@uri_factory']
+      - setSession: ['@session']
+      - setMenuConfig: ['%menu.config%', '%menu.cookie_state_name%']
+      - setMetaConfig: ['%meta.config%']
+      - setRootDirectory: ['%kernel.directory.root%']

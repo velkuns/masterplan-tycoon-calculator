@@ -1,0 +1,51 @@
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true
+
+  #~ Kernel Http & Component Http services
+  Eureka\Kernel\Http\:
+    resource: '%kernel.directory.root%/vendor/eureka/kernel-http/src/*'
+    exclude:  '%kernel.directory.root%/vendor/eureka/kernel-http/src/{Middleware,Application,Kernel.php}'
+
+  Eureka\Component\Http\:
+    resource: '%kernel.directory.root%/vendor/eureka/component-http/src/*'
+
+  #~ PSR-17 Factories
+  Nyholm\Psr7\:
+    resource: '%kernel.directory.root%/vendor/nyholm/psr7/src/*'
+
+  Psr\Http\Message\ResponseFactoryInterface:
+    alias: 'Nyholm\Psr7\Factory\Psr17Factory'
+
+  Psr\Http\Message\RequestFactoryInterface:
+    alias: 'Nyholm\Psr7\Factory\Psr17Factory'
+
+  Psr\Http\Message\ServerRequestFactoryInterface:
+    alias: 'Nyholm\Psr7\Factory\Psr17Factory'
+
+  Psr\Http\Message\StreamFactoryInterface:
+    alias: 'Nyholm\Psr7\Factory\Psr17Factory'
+
+  Psr\Http\Message\UriFactoryInterface:
+    alias: 'Nyholm\Psr7\Factory\Psr17Factory'
+
+  response_factory:
+    alias: 'Nyholm\Psr7\Factory\Psr17Factory'
+    public: true
+
+  request_factory:
+    alias: 'Nyholm\Psr7\Factory\Psr17Factory'
+    public: true
+
+  server_request_factory:
+    alias: 'Nyholm\Psr7\Factory\Psr17Factory'
+    public: true
+
+  stream_factory:
+    alias: 'Nyholm\Psr7\Factory\Psr17Factory'
+    public: true
+
+  uri_factory:
+    alias: 'Nyholm\Psr7\Factory\Psr17Factory'
+    public: true

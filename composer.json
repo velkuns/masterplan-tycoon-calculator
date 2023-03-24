@@ -1,0 +1,53 @@
+{
+  "name": "velkuns/masterplan-tycoon-calculator",
+  "description": "Build calculator for Masterplan Tycoon Game",
+  "type": "project",
+  "minimum-stability": "stable",
+  "license": "MIT",
+
+  "authors": [
+    {
+      "name": "Romain Cottard",
+      "role": "Developer"
+    }
+  ],
+
+  "autoload": {
+    "psr-4": {
+      "Application\\": "./src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Application\\Tests\\": "./tests"
+    }
+  },
+
+  "require": {
+    "php": "8.1.*||8.2.*",
+    "ext-json":"*",
+    "ext-curl": "*",
+
+    "eureka/component-console": "^5.3",
+    "eureka/component-deployer": "^2.0",
+    "eureka/component-web": "^5.2",
+    "eureka/kernel-http": "^5.2",
+    "eureka/kernel-console": "^5.1",
+    "psr/clock": "^1.0",
+    "symfony/cache": "^5.4||^6.2",
+    "twig/twig": "^v3.5"
+  },
+
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "phpunit/phpunit": "^10.0",
+    "phpstan/phpstan": "^1.10",
+    "phpunit/phpcov": "^9.0",
+    "squizlabs/php_codesniffer": "^3.7"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}

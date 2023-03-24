@@ -1,0 +1,22 @@
+{% block footer %}
+
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"><i class="bi bi-map-fill"></i><span class="text-muted"> Masterplan Tycoon Calculator</span></div>
+            <div class="col-lg-3">
+                Links:
+                <a href="https://store.steampowered.com/app/1644500/Masterplan_Tycoon/" target="_blank"><i class="bi bi-steam"></i></a>
+                <a href="https://discord.com/invite/JDXWssYNA3"><i class="bi bi-discord" target="_blank"></i></a>
+                <a href="https://www.reddit.com/r/MasterplanTycoon/" target="_blank"><i class="bi bi-reddit"></i></a>
+            </div>
+            <div class="col-lg-3">Developed by <a href="https://github.com/velkuns" target="_blank">{{ meta.author }}</a></div>
+            <div class="col-lg-3">version: {{ meta.version }}</div>
+        </div>
+
+
+
+    </div>
+</footer>
+
+{% endblock %}

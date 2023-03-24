@@ -1,0 +1,17 @@
+parameters:
+
+  meta.config:
+    title:   'Masterplan Tycoon Calculator'
+    charset: 'utf-8'
+    app:
+      name_short: ''
+      name_full: 'Masterplan Tycoon Calculator'
+    description: 'Masterplan Tycoon Calculator - Website'
+    keywords: 'masterplan, tycoon, calculator, tool'
+    author:   'velkuns'
+    version:  '%app.version%'
+    copyright:
+      year: 'now'
+      name: 'velkuns'
+    footer:
+      links: [ ]

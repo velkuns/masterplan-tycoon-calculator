@@ -1,0 +1,30 @@
+parameters:
+
+  app.middleware:
+    errorApp:       'Eureka\Kernel\Http\Middleware\ErrorMiddleware'
+    twig:           'Application\Middleware\TwigMiddleware'
+    router:         'Eureka\Kernel\Http\Middleware\RouterMiddleware'
+    controller:     'Eureka\Kernel\Http\Middleware\ControllerMiddleware'
+
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+    bind:
+      $applicationName: '%app.name%'
+
+  #~ Global Kernel Services Middleware
+  Eureka\Kernel\Http\Middleware\:
+    resource: '%kernel.directory.root%/vendor/eureka/kernel-http/src/Middleware'
+
+  #~ Global Application Services Middleware
+  Application\Middleware\TwigMiddleware:
+    arguments:
+      $twigPaths: '%twig.paths%'
+
+  Application\Middleware\ErrorMiddleware: ~
+
+  Eureka\Kernel\Http\Controller\ErrorControllerInterface:
+    alias: 'Application\Controller\Web\Error\ErrorController'

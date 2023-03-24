@@ -1,0 +1,18 @@
+parameters:
+
+    #~ Debug
+    kernel.debug: false
+
+    #~ Environment
+    kernel.environment: prod
+
+    #~ Errors
+    kernel.error.display: 'false'
+    kernel.error.reporting: !php/const E_ALL
+
+    #~ Directories
+    kernel.directory.root:   '..' # Overridden in Kernel class, but define here as helper
+    kernel.directory.cache:  '../var/cache'
+    kernel.directory.log:    '../var/log'
+    kernel.directory.config: '../config'
+    kernel.directory.vendor: '../vendor'

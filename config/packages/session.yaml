@@ -1,0 +1,8 @@
+services:
+
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true
+
+  session:
+    alias: 'Eureka\Component\Web\Session\Session'

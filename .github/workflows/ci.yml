@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # To avoid "Shallow clone detected" error in SonarCloud report
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+
+      - name: Install dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: make install
+
+      - name: Check Code Style
+        run: make phpcs
+
+      - name: Units Tests
+        run: make tests
+
+      - name: Fix unit tests report path
+        run: |
+          sed -i 's+'$GITHUB_WORKSPACE'+/github/workspace+g' build/reports/phpunit/clover.xml
+          sed -i 's+'$GITHUB_WORKSPACE'+/github/workspace+g' build/reports/phpunit/unit.xml
+
+      - name: PHP 8.1 Compatibility
+        run: make php81compatibility
+
+      - name: PHP 8.2 Compatibility
+        run: make php82compatibility
+
+      - name: PHP Static Analyze
+        run: make analyze

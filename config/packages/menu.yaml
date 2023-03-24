@@ -1,0 +1,11 @@
+parameters:
+
+  menu.cookie_state_name: 'closed'
+
+  menu.config:
+
+    matrix:
+      label: 'Home'
+      icon: ''
+      route: ~
+      children: []

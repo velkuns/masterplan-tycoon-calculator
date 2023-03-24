@@ -1,0 +1,11 @@
+parameters:
+
+    #~ Debug
+    kernel.debug: true
+
+    #~ Environment
+    kernel.environment: dev
+
+    #~ Errors
+    kernel.error.display: true
+    kernel.error.reporting: !php/const E_ALL

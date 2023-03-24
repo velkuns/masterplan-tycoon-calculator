@@ -1,0 +1,10 @@
+services:
+
+  _defaults:
+    autowire: true
+
+  Psr\Log\:
+    resource: '%kernel.directory.root%/vendor/psr/log/Psr/Log/*'
+
+  Psr\Log\LoggerInterface:
+    alias: Psr\Log\NullLogger

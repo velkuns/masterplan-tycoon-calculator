@@ -1,0 +1,13 @@
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Symfony\Component\Cache\Adapter\ArrayAdapter: ~
+
+  Psr\Cache\CacheItemPoolInterface:
+    alias: 'Symfony\Component\Cache\Adapter\ArrayAdapter'
+
+  app.cache.default:
+    alias: 'Symfony\Component\Cache\Adapter\ArrayAdapter'

@@ -1,0 +1,71 @@
+{% extends '@common/Content/Page.twig' %}
+
+{% block content %}
+
+    <ul class="nav nav-pills nav-fill pt-5" id="buildings-tab" role="tablist">
+    {% for rankId, rankBuildings in buildings %}
+        <li class="nav-item" role="presentation">
+            <button class="nav-link {{ loop.first ? 'active' : '' }}" id="rank-{{ loop.index0 }}-tab" data-bs-toggle="pill" data-bs-target="#rank-{{ loop.index0 }}" type="button" role="tab" aria-controls="rank-{{ loop.index0 }}" aria-selected="true">Rank {{ rankId }}</button>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <div class="tab-content p-4" id="rank-content">
+    {% for rankId, rankBuildings in buildings %}
+        <div class="tab-pane fade w-100 show {{ loop.first ? 'active' : '' }}" id="rank-{{ rankId }}" role="tabpanel" aria-labelledby="rank-{{ rankId }}-tab" tabindex="{{ rankId }}">
+            <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="rank-{{ rankId }}-buildings" role="tablist" aria-orientation="vertical">
+                {% for building in rankBuildings %}
+                    {% set buildingId = loop.index0 %}
+                    <button class="nav-link {{ loop.first ? 'active' : '' }}" id="rank-{{ rankId }}-building-{{ buildingId }}-tab" data-bs-toggle="pill" data-bs-target="#rank-{{ rankId }}-building-{{ buildingId }}" type="button" role="tab" aria-controls="rank-{{ rankId }}-building-{{ buildingId }}" aria-selected="true">
+                        {{ building.getName()|translate(lang)|capitalize }}
+                    </button>
+                {% endfor %}
+                </div>
+                <div class="tab-content w-100" id="rank-{{ rankId }}-building-content">
+                {% for building in rankBuildings %}
+                    {% set buildingId = loop.index0 %}
+                    <div class="tab-pane fade show {{ loop.first ? 'active' : '' }}" id="rank-{{ rankId }}-building-{{ buildingId }}" role="tabpanel" aria-labelledby="rank-{{ rankId }}-building-{{ buildingId }}-tab" tabindex="{{ loop.index0 }}">
+                        {% include '@app/Building/BuildingCard.twig' %}
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <form method="post">
+    <div class="row pb-3">
+        <div class="col-3">
+            <select id="buildings-list" name="buildings-list[]" class="form-select" size="5" multiple aria-label="building list you want to build">
+            </select>
+        </div>
+        <div class="col-3">
+            <button class="btn btn-outline-success h-100" type="submit">Calculate</button>
+        </div>
+    </div>
+    </form>
+
+    {% if needToBuild %}
+    <div class="row pb-5">
+        <div class="col-3">
+            <h3>Want to build:</h3>
+            <ul class="list-group">
+            {% for data in wantToBuild %}
+                <li class="list-group-item">{{ data.quantity }} x {{ data.building.getName()|translate(lang) }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="col-3">
+            <h3>Need to build:</h3>
+            <ul class="list-group">
+            {% for data in needToBuild %}
+                <li class="list-group-item">{{ data.quantity|round(0, 'ceil') }} x {{ data.building.getName()|translate(lang) }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

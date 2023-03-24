@@ -1,0 +1,83 @@
+# Services Yaml file
+parameters:
+
+  eureka.deployer.dir.src: '/server/src'
+  eureka.deployer.dir.www: '/server/www'
+
+  eureka.deployer.config:
+    # Default values
+    app.name: 'magiclegacy'
+    app.domain: 'www.magiclegacy.fr'
+    app.tag: '%app.version%'
+
+    install:
+      #~ Installation steps
+      step.start: 0
+      step.end: 100
+
+      step.list:
+        #~ 0: Start Install (defined in main install script)
+        #~ 1 to 9: reserved for deployed itself
+        #~ 001: Install composer
+        #~ 002: Copy secrets files
+
+        #~ Setup some directories
+        10: 'Install/Init/Directories'
+        11: 'Install/Init/Symlink'
+
+        #~ Yarn / npm
+        #40: 'Install/Yarn/Install'
+        #41: 'Install/Yarn/EncoreBuild'
+
+        #~ Cleaning installation files
+        70: 'Install/Clean/Files'
+
+        #~ Composer cleaning & install no-dev
+        #80: 'Install/Clean/Cache'
+
+        #~ 90 to 99: reserved for deployed itself
+
+        #~  98: Clean cache
+        #~  99: Init directory again for production
+        #~ 100: Ending installation (defined in main install script)
+
+      init:
+        directories:
+          'var/log': 777
+          'var/cache': 777
+
+        symlinks: [ ]
+
+      copy:
+        files: [ ]
+
+      clean:
+        files:
+          - '.gitignore'
+          - 'composer.lock'
+          - 'README.md'
+
+        directories: [ ]
+
+
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true
+
+  Eureka\Component\Deployer\:
+    resource: '%kernel.directory.root%/vendor/eureka/component-deployer/src/*'
+    exclude: '%kernel.directory.root%/vendor/eureka/component-deployer/src/{Script}'
+
+  Eureka\Component\Deployer\Script\:
+    resource: '%kernel.directory.root%/vendor/eureka/component-deployer/src/Script/*'
+    public: true
+    calls:
+      - [ 'setPathBuilder' ]
+      - [ 'setRootDir', [ '%kernel.directory.root%' ] ]
+      - [ 'setConfig',  [ '%eureka.deployer.config%' ] ]
+
+  Eureka\Component\Deployer\Common\PathBuilder:
+    arguments:
+      $pathSource: '%eureka.deployer.dir.src%'
+      $pathLink: '%eureka.deployer.dir.www%'
