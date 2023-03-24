@@ -16,6 +16,12 @@
                         </li>
                         {% endfor %}
                     </ul>
+                    <form class="d-flex" role="search">
+                        <select id="lang" onchange="registerLang(this.value);">
+                            <option value="en" {{ lang == 'en' ? 'selected' : '' }}>English</option>
+                            <option value="fr" {{ lang == 'fr' ? 'selected' : '' }}>Français</option>
+                        </select>
+                    </form>
                 </div>
             </div>
         </nav>

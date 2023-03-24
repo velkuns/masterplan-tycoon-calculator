@@ -1,8 +1,8 @@
 parameters:
 
   app.middleware:
-    errorApp:       'Eureka\Kernel\Http\Middleware\ErrorMiddleware'
     twig:           'Application\Middleware\TwigMiddleware'
+    errorApp:       'Eureka\Kernel\Http\Middleware\ErrorMiddleware'
     router:         'Eureka\Kernel\Http\Middleware\RouterMiddleware'
     controller:     'Eureka\Kernel\Http\Middleware\ControllerMiddleware'
 

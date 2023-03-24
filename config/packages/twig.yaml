@@ -4,7 +4,6 @@ parameters:
   twig.paths:
     '../templates/bootstrap/common': 'common'
     '../templates/bootstrap/layout': 'layout'
-    '../templates/bootstrap/macro':  'macro'
     '../templates/bootstrap/app':    'app'
 
 services:

@@ -30,21 +30,14 @@ window.addToList = function (buildingId, buildingName)
     select.add(option);
 };
 
-window.updateSelectValues = function ()
-{
-    let pattern = 'x(\\d+)';
-    let regexp  = new RegExp(pattern);
+window.registerLang = function(lang) {
+    setCookie('lang', lang, 360);
+    window.location.href = window.location.href;
+};
 
-    let select  = document.getElementById('buildings-list');
 
-    //~ Update existing entry
-    for (let index in select.options) {
-        let option = select.options[index];
-
-        let matches  = regexp.exec(option.text);
-        let quantity = parseInt(matches[1]);
-        option.value = option.value + ' x' + (quantity + 1);
-    }
-
-    return true;
+function setCookie(name, value, expireDays) {
+    const expireDate = new Date();
+    expireDate.setDate(expireDate.getDate() + expireDays);
+    document.cookie = name + '=' + encodeURI(value) + '; path=/' + (!expireDays ? '' : ';expires=' + expireDate.toString() + '; SameSite=Strict');
 }
