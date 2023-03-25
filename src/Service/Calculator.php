@@ -17,7 +17,7 @@ use Application\VO\Resource;
 
 class Calculator
 {
-    private const MAINTENANCE_TIME = 60; // Time for maintenance consumption
+    private const MAINTENANCE_TIME = 180; // Time for maintenance consumption
     private const MAINTENANCE_TIME_RATIO_PER_MINUTE = self::MAINTENANCE_TIME / 60; // need per minute.
 
     /**

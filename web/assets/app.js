@@ -9,7 +9,7 @@ window.addToList = function (buildingId, buildingName)
     //~ Update existing entry
     for (let index in select.options) {
         let option   = select.options[index];
-        let matches  = regexp.exec(option.text);
+        let matches  = regexp.exec(option.value);
 
         if (matches === null) {
             continue;
