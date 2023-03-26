@@ -2,7 +2,7 @@
 parameters:
 
   app.name:    'masterplan-tycoon-calculator'
-  app.version: '1.0.2'
+  app.version: '1.1.0'
 
   app.cookie.domain: '.velkuns.com'
   app.session.name:  'masterplan-tycoon-calculator'

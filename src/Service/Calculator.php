@@ -13,133 +13,101 @@ namespace Application\Service;
 
 use Application\Collection\BuildingCollection;
 use Application\VO\Building;
+use Application\VO\Production;
 use Application\VO\Resource;
 
 class Calculator
 {
     private const MAINTENANCE_TIME = 180; // Time for maintenance consumption
-    private const MAINTENANCE_TIME_RATIO_PER_MINUTE = self::MAINTENANCE_TIME / 60; // need per minute.
 
     /**
      * @param BuildingCollection $buildings
      * @param array<string, float> $buildingWantList
-     * @return array<string, array{building: Building, quantity: float}>
+     * @return array<string, array{building: Building, quantity: float, resources: array<string>}>
      */
     public function solve(BuildingCollection $buildings, array $buildingWantList): array
     {
+        $production  = new Production();
         $resourceMap = $this->getBuildingsResourceMap($buildings);
 
-        /** @var \SplQueue<array{0:Building, 1: Resource, 2: float}> $queue */
+        /** @var \SplQueue<array{0: string, 1: float}> $queue */
         $queue = new \SplQueue();
 
-        foreach ($buildingWantList as $id => $quantity) {
+        foreach ($buildingWantList as $id => $nbBuildings) {
             //~ Get building object
-            /** @var Building $building */
             $building = $buildings[$id];
 
-            $this->enqueueBuildingMaintenanceRequirements($queue, $building, $quantity, $resourceMap);
-            $this->enqueueBuildingConsumeRequirements($queue, $building, $quantity, $resourceMap);
+            //~ Add current building maintenance & consume resources requirements to queue
+            $this->enqueueBuildingMaintenanceRequirements($queue, $building, $nbBuildings);
+            $this->enqueueBuildingConsumeRequirements($queue, $building, $nbBuildings);
         }
 
-        $needBuildings = [];
         while (!$queue->isEmpty()) {
-            /** @var array{0:Building, 1: Resource, 2: float} $data */
             $data = $queue->dequeue();
 
-            [$building, $resource, $quantity] = $data;
+            [$resourceName, $quantityNeeded] = $data;
 
-            $buildingQuantity = $this->countNeededBuilding($queue, $building, $resource->getName(), $quantity, $resourceMap);
-            $needBuildings[$building->getId()] ??= ['quantity' => 0, 'building' => $building];
-            $needBuildings[$building->getId()]['quantity'] += $buildingQuantity;
+            //~ Check if resource is already produce in suffisant quantity regarding the desired quantity
+            if ($production->produceEnoughResource($resourceName, $quantityNeeded)) {
+                $production->add($resourceName, 0, $quantityNeeded, 0); // just add consume part
+                continue;
+            }
 
-            //~ Add current building maintenance dependencies resource from building dep to queue
-            $this->enqueueBuildingMaintenanceRequirements($queue, $building, $quantity, $resourceMap);
+            //~ Get build which produce desired resource
+            $building = $resourceMap[$resourceName];
+
+            /** @var Building $building */
+            //~ For building, get produced resource, get quantity produced / min & count number of build need to satisfy
+            //~ quantity needed (round up to next integer)
+            $producedResource = $building->getProducedResourceByName($resourceName);
+            $producedPerMin   = $producedResource->getQuantityPerMinute($building->getCycleTime());
+            $nbBuildings      = (int) ceil($quantityNeeded / $producedPerMin);
+
+            $production->add($resourceName, $producedPerMin * $nbBuildings, $quantityNeeded, $nbBuildings);
+
+            //~ Add current building maintenance & consume resources requirements to queue
+            $this->enqueueBuildingMaintenanceRequirements($queue, $building, $nbBuildings);
+            $this->enqueueBuildingConsumeRequirements($queue, $building, $nbBuildings);
         }
 
-        return $needBuildings;
+        return $production->needBuildings($resourceMap);
     }
 
     /**
-     * Count number of dependency building based on ratio / minute that building can produce to have the desired
-     * quantity of that resource.
-     *
-     * @param \SplQueue<array{0:Building, 1: Resource, 2: float}> $queue
+     * @param \SplQueue<array{0: string, 1: float}> $queue
      * @param Building $building
-     * @param string $resourceName
-     * @param float $quantity
-     * @param BuildingCollection $resourceMap
-     * @return float
-     */
-    private function countNeededBuilding(
-        \SplQueue $queue,
-        Building $building,
-        string $resourceName,
-        float $quantity,
-        BuildingCollection $resourceMap
-    ): float {
-        $needPerMinute = $quantity / self::MAINTENANCE_TIME_RATIO_PER_MINUTE;
-
-        //~ Search for recipe that produce needed $resource
-        $recipe   = $building->getRecipeFor($resourceName);
-
-        //~ Then, get that resource and quantity
-        $resource = $recipe->getProducedResourceByName($resourceName);
-
-        //~ Get full cycle time for all recipe (some building have many recipes, and game run each sequentially)
-        $cycleTime = $building->getCycleTime();
-
-        //~ Then get produced resource needed / minute (based on full cycle & number of quantity needed)
-        $producedPerMinute = $resource->getQuantityPerMinute($cycleTime);
-
-        $countNeedBuilding = ($needPerMinute / $producedPerMinute);
-
-        foreach ($recipe->getConsume() as $consumedResource) {
-            $depBuilding = $resourceMap[$consumedResource->getName()];
-            $depQuantity = $consumedResource->getQuantityPerMinute($cycleTime) * $countNeedBuilding;
-            $queue->enqueue([$depBuilding, $consumedResource, $depQuantity]);
-        }
-
-        return $countNeedBuilding;
-    }
-
-    /**
-     * @param \SplQueue<array{0:Building, 1: Resource, 2: float}> $queue
-     * @param Building $building
-     * @param float $quantity
-     * @param BuildingCollection $resourceMap
+     * @param float $nbBuilding
      * @return void
      */
     private function enqueueBuildingMaintenanceRequirements(
         \SplQueue $queue,
         Building $building,
-        float $quantity,
-        BuildingCollection $resourceMap
+        float $nbBuilding
     ): void {
-        foreach ($building->getMaintenance() as $maintenanceResource) {
-            $depBuilding = $resourceMap[$maintenanceResource->getName()];
-            $depQuantity = $maintenanceResource->getQuantityPerMinute(self::MAINTENANCE_TIME) * $quantity;
-            $queue->enqueue([$depBuilding, $maintenanceResource, $depQuantity]);
+        /** @var Resource $resource */
+        foreach ($building->getMaintenance() as $resource) {
+            //~ Calculate resource quantity needed to satisfy maintenance cost (for the number of building)
+            $quantity = $resource->getQuantityPerMinute(self::MAINTENANCE_TIME) * $nbBuilding;
+            $queue->enqueue([$resource->getName(), $quantity]);
         }
     }
 
     /**
-     * @param \SplQueue<array{0:Building, 1: Resource, 2: float}> $queue
+     * @param \SplQueue<array{0: string, 1: float}> $queue
      * @param Building $building
-     * @param float $quantity
-     * @param BuildingCollection $resourceMap
+     * @param float $nbBuilding
      * @return void
      */
     private function enqueueBuildingConsumeRequirements(
         \SplQueue $queue,
         Building $building,
-        float $quantity,
-        BuildingCollection $resourceMap
+        float $nbBuilding
     ): void {
         foreach ($building->getRecipes() as $recipe) {
-            foreach ($recipe->getConsume() as $consumedResource) {
-                $depBuilding = $resourceMap[$consumedResource->getName()];
-                $depQuantity = $consumedResource->getQuantityPerMinute($recipe->getTime()) * $quantity;
-                $queue->enqueue([$depBuilding, $consumedResource, $depQuantity]);
+            foreach ($recipe->getConsume() as $resource) {
+                //~ Calculate resource quantity consumed (for the number of building) to work at 100%
+                $quantity = $resource->getQuantityPerMinute($recipe->getTime()) * $nbBuilding;
+                $queue->enqueue([$resource->getName(), $quantity]);
             }
         }
     }

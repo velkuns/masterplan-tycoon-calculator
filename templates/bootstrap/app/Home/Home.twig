@@ -57,11 +57,14 @@
             {% endfor %}
             </ul>
         </div>
-        <div class="col-3">
+        <div class="col-9">
             <h3>Need to build:</h3>
             <ul class="list-group">
             {% for data in needToBuild %}
-                <li class="list-group-item">{{ data.quantity|round(0, 'ceil') }} x {{ data.building.getName()|translate(lang) }}</li>
+                <li class="list-group-item">
+                    <b>{{ data.quantity }} x {{ data.building.getName()|translate(lang) }}</b>
+                    (Overstock per minute: {% for resource in data.resources %}<span class="border border-1 border-success rounded-2 bg-success-subtle px-2 mx-1">{{ resource }}</span>{% endfor %} )
+                </li>
             {% endfor %}
             </ul>
         </div>

@@ -13,15 +13,16 @@ namespace Application\VO;
 
 class Building
 {
-    /** @var list<Resource> cost */
+    /** @var Resource[] cost */
     private array $cost = [];
 
-    /** @var list<Recipe> recipes */
+    /** @var Recipe[] recipes */
     private array $recipes = [];
 
-    /** @var list<Resource> maintenance */
+    /** @var Resource[] maintenance */
     private array $maintenance = [];
     private string|null $proximity;
+    private int $cycleTime;
 
     /**
      * @phpstan-param array{
@@ -45,7 +46,13 @@ class Building
             $this->maintenance[] = new Resource($name, $quantity);
         }
 
-        $this->proximity   = $data['proximity'];
+        $this->proximity = $data['proximity'];
+
+        $this->cycleTime = array_reduce(
+            $this->getRecipes(),
+            fn(int $time, Recipe $recipe) => $time + $recipe->getTime(),
+            0
+        );
     }
 
     public function getId(): string
@@ -94,9 +101,22 @@ class Building
         throw new \RuntimeException("Invalid data! Building cannot produce {$resourceName} !");
     }
 
+    public function getProducedResourceByName(string $resourceName): Resource
+    {
+        foreach ($this->getRecipes() as $recipe) {
+            foreach ($recipe->getProduce() as $resource) {
+                if ($resource->getName() === $resourceName) {
+                    return $resource;
+                }
+            }
+        }
+
+        throw new \RuntimeException("Invalid data! Building cannot produce {$resourceName} !");
+    }
+
     public function getCycleTime(): int
     {
-        return array_reduce($this->getRecipes(), fn(int $time, Recipe $recipe) => $time + $recipe->getTime(), 0);
+        return $this->cycleTime;
     }
 
     /**

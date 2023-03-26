@@ -54,7 +54,7 @@
           "consume": null
         },
         {
-          "time": 60,
+          "time": 30,
           "produce": null,
           "consume": null
         }
@@ -113,7 +113,7 @@
           "consume": null
         },
         {
-          "time": 60,
+          "time": 30,
           "produce": null,
           "consume": null
         }
@@ -346,7 +346,7 @@
           "consume": null
         },
         {
-          "time": 60,
+          "time": 30,
           "produce": null,
           "consume": null
         }
@@ -365,7 +365,7 @@
       },
       "recipes": [
         {
-          "time": 60,
+          "time": 30,
           "produce": {
             "sugar cane": 2
           },
@@ -423,7 +423,7 @@
           "consume": null
         },
         {
-          "time": 60,
+          "time": 30,
           "produce": null,
           "consume": null
         }
@@ -622,7 +622,7 @@
           "consume": null
         },
         {
-          "time": 60,
+          "time": 30,
           "produce": null,
           "consume": null
         }
@@ -859,7 +859,7 @@
           "consume": null
         },
         {
-          "time": 60,
+          "time": 30,
           "produce": null,
           "consume": null
         }
@@ -886,7 +886,7 @@
           "consume": null
         },
         {
-          "time": 60,
+          "time": 30,
           "produce": null,
           "consume": null
         }

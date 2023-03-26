@@ -20,6 +20,7 @@ config/secrets/*
 
 #~ Tests
 .phpunit.result.cache
+.phpunit.cache
 build/
 
 #~ others
